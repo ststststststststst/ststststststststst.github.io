@@ -1,4 +1,6 @@
 # 又一个404界面，很类似于Windows 蓝屏
+[效果](word/2/in.html)
+
 代码：
 
 ```html
@@ -56,7 +58,7 @@
     intervalid = setInterval("cutdown()", 1000);   
     function cutdown() {   
         if (i == 0) {   
-            window.location.href = "http://mkblog.cn"; //倒计时完成后跳转的地址  
+            window.location.href = "/"; //倒计时完成后跳转的地址  
             clearInterval(intervalid);   
         }   
         document.getElementById("mes").innerHTML = i;   
