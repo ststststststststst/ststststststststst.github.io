@@ -1,6 +1,7 @@
 # sunny_town的博客
 ## 文章列表
-还没有文章~
+1. [推荐一个简洁404界面](https://ststststststststst.github.io/word/1/)
+2. [又一个404界面，很类似于Windows 蓝屏](https://ststststststststst.github.io/word/1/)
 
 ---
 [![](/luogu-logo.jpg)](https://www.luogu.com.cn/) **洛谷绑定状态** :[sunny_town](https://www.luogu.com.cn/user/1240580) 
