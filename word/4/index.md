@@ -145,4 +145,6 @@ function grabImage($url, $filename = "")
 ```
 这样，如果这个php被访问，它就会自动启动抓取并保存。你可以用阿里云监控或其他类型的网站监控服务来实现每天自动运行这个php。
 
-[效果](/word/4/in.html)
+不过呢，这里也有免费的api，链接：http://api.mkblog.cn/bing/jump.php
+
+效果：![](http://api.mkblog.cn/bing/jump.php)
