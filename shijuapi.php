@@ -21,4 +21,4 @@ $result = $data[array_rand($data)];
 // 去除多余的换行符（保险起见）
 $result = str_replace(array("\r","\n","\r\n"), '', $result);
  
-echo $result;
+echo 'document.write("'.htmlspecialchars($result).'");';
