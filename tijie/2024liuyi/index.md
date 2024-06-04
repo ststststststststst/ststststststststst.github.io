@@ -8,14 +8,43 @@
 2. [B](#b)
 3. [C](#c)
 4. [D](#d)
-5. [E](#e)
 ## A
-![图片](/tijie/nottijie.png)
+**so esey.**
+
+看题目**sort**，代码：
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+string a;
+int main(){
+	cin >> a;
+	sort(a.begin(),a.end());
+	cout << a;
+}
+```
+居然还因为样例有bug，有人写：
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+string s;
+int main(){
+    cin>>s;
+    if(s.size()<=6)sort(s.begin(), s.end());
+    cout<<s;
+}
+```
+还AC了。
 ## B
-![图片](/tijie/nottijie.png)
+输出`What's the time, Mr Wolf?`即可。
 ## C
-![图片](/tijie/nottijie.png)
+~~**好难啊。**~~
+
+大哥/大姐，把那个`68747470733a2f2f67697465652e636f6d2f73756e6e792d746f776e2f3631657274`十六进制转字符串即可，在输出字符串里链接的内容。
 ## D
-![图片](/tijie/nottijie.png)
-## E
-![图片](/tijie/nottijie.png)
+~~《小心TLE》~~
+
+直接：
+```python
+while True:
+    pass
+```
