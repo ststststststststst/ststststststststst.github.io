@@ -25,7 +25,13 @@
   }
 
   canvas {
-    display: block; /* 确保 canvas 不会有额外的间距 */
+    display: none; /* 隐藏 canvas */
+    width: 280px;
+    height: 80px;
+  }
+
+  img {
+    display: block; /* 确保 img 不会有额外的间距 */
     width: 280px;
     height: 80px;
   }
@@ -35,6 +41,7 @@
 
 <div class="captcha-container">
   <canvas id="captchaCanvas"></canvas>
+  <img id="captchaImage" alt="Captcha Image">
 </div>
 
 <script>
@@ -70,8 +77,8 @@
 
   function drawBackground(canvas) {
     const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    canvas.width = 280; // 确保 canvas 宽度和 img 一致
+    canvas.height = 80; // 确保 canvas 高度和 img 一致
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -124,10 +131,20 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const captchaCanvas = document.getElementById('captchaCanvas');
+    const captchaImage = document.getElementById('captchaImage');
     const captchaText = generateCaptchaText();
 
     drawBackground(captchaCanvas);
     drawCaptchaText(captchaCanvas, captchaText);
+
+    // 将 canvas 转换为 PNG 图像并显示在 img 元素中
+    const dataURL = captchaCanvas.toDataURL('image/png');
+
+    if (dataURL) {
+      captchaImage.src = dataURL;
+    } else {
+      console.error('What Error?');
+    }
   });
 </script>
 
