@@ -29,27 +29,12 @@
     width: 280px;
     height: 80px;
   }
-
-  img {
-    display: block; /* 确保 img 不会有额外的间距 */
-    width: 280px;
-    height: 80px;
-  }
-
-  button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
 </style>
 </head>
 <body>
 
 <div class="captcha-container">
   <canvas id="captchaCanvas"></canvas>
-  <img id="captchaImage" alt="Captcha Image">
-  <!-- 移除按钮 -->
 </div>
 
 <script>
@@ -139,27 +124,23 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const captchaCanvas = document.getElementById('captchaCanvas');
-    const captchaImage = document.getElementById('captchaImage');
     const captchaText = generateCaptchaText();
 
     drawBackground(captchaCanvas);
     drawCaptchaText(captchaCanvas, captchaText);
 
-    // 将 canvas 转换为 PNG 图像并显示在 img 元素中
+    // 将 canvas 转换为 PNG 图像
     const dataURL = captchaCanvas.toDataURL('image/png');
 
     if (dataURL) {
-      captchaImage.src = dataURL;
+      // 创建一个新的 <img> 元素并将图像数据赋值给它的 src 属性
+      const img = new Image();
+      img.src = dataURL;
+
+      // 显示图像
+      document.body.appendChild(img);
     } else {
       console.error('What Error?');
-    }
-
-    // 在页面加载后立即打开新窗口并显示验证码
-    const newWindow = window.open('about:blank', '_self');
-    if (newWindow) {
-      newWindow.document.write('<img src="' + dataURL + '" alt="Captcha Image">');
-    } else {
-      console.error('Failed to open new window');
     }
   });
 </script>
