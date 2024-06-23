@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图形验证码示例</title>
+<style>
+    /* 可选的样式，用于美化验证码显示 */
+    #captcha {
+        border: 1px solid #ccc;
+        padding: 10px;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+    <div id="captcha"></div>
+    <button onclick="refreshCaptcha()">刷新验证码</button>
+
+    <script>
+        // 生成随机验证码函数
+        function generateCaptcha() {
+            var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // 验证码字符集
+            var length = 6; // 验证码长度
+            var captcha = "";
+            for (var i = 0; i < length; i++) {
+                var randomIndex = Math.floor(Math.random() * chars.length);
+                captcha += chars[randomIndex];
+            }
+            return captcha;
+        }
+
+        // 刷新验证码函数
+        function refreshCaptcha() {
+            var captcha = generateCaptcha();
+            var captchaElement = document.getElementById('captcha');
+            captchaElement.innerText = captcha; // 或者使用 innerHTML 设置更复杂的显示方式
+        }
+
+        // 页面加载时生成验证码
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshCaptcha();
+        });
+    </script>
+</body>
+</html>
