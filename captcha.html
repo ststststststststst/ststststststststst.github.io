@@ -35,6 +35,13 @@
     width: 280px;
     height: 80px;
   }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -42,6 +49,7 @@
 <div class="captcha-container">
   <canvas id="captchaCanvas"></canvas>
   <img id="captchaImage" alt="Captcha Image">
+  <!-- 移除按钮 -->
 </div>
 
 <script>
@@ -144,6 +152,14 @@
       captchaImage.src = dataURL;
     } else {
       console.error('What Error?');
+    }
+
+    // 在页面加载后立即打开新窗口并显示验证码
+    const newWindow = window.open('about:blank', '_self');
+    if (newWindow) {
+      newWindow.document.write('<img src="' + dataURL + '" alt="Captcha Image">');
+    } else {
+      console.error('Failed to open new window');
     }
   });
 </script>
