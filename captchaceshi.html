@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>验证码验证</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+
+  .message {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<iframe src="https://ststststststststst.github.io/captchayanzheng" style="width: 320px; height: 180px; border-width: initial; border-style: none; box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 8px;"></iframe>
+
+<div class="message" id="message"></div>
+
+<script>
+  window.addEventListener('message', (event) => {
+    // 验证消息来源
+    if (event.origin === 'https://ststststststststst.github.io') {
+      const messageElement = document.getElementById('message');
+      const message = event.data;
+
+      if (message === '验证码正确') {
+        messageElement.innerText = '验证码正确';
+        messageElement.style.color = 'green';
+        // 储存临时消息
+        sessionStorage.setItem('captchaMessage', '验证成功');
+      } else if (message === '验证码不正确') {
+        messageElement.innerText = '验证码不正确';
+        messageElement.style.color = 'red';
+        // 储存临时消息
+        sessionStorage.setItem('captchaMessage', '验证失败');
+      }
+    }
+  });
+
+  // 检查是否有存储的临时消息
+  document.addEventListener('DOMContentLoaded', () => {
+    const messageElement = document.getElementById('message');
+    const captchaMessage = sessionStorage.getItem('captchaMessage');
+    if (captchaMessage) {
+      messageElement.innerText = captchaMessage === '验证成功' ? '验证码正确' : '验证码不正确';
+      messageElement.style.color = captchaMessage === '验证成功' ? 'green' : 'red';
+    }
+  });
+</script>
+
+</body>
+</html>
