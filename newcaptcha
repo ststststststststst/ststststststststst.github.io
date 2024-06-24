@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图像验证码</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+
+  .captcha-container {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  }
+
+  canvas {
+    display: none; /* 隐藏 canvas */
+    width: 280px;
+    height: 80px;
+  }
+</style>
+</head>
+<body>
+
+<div class="captcha-container">
+  <canvas id="captchaCanvas"></canvas>
+</div>
+
+<script>
+  function generateCaptchaText() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz123456789';
+    let captcha = '';
+    for (let i = 0; i < 6; i++) { // 生成六个字符的验证码
+      captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return captcha;
+  }
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function getRandomLightColor() {
+    const r = Math.floor(Math.random() * 180) + 75;
+    const g = Math.floor(Math.random() * 180) + 75;
+    const b = Math.floor(Math.random() * 180) + 75;
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function getRandomDarkColor() {
+    const r = Math.floor(Math.random() * 100);
+    const g = Math.floor(Math.random() * 100);
+    const b = Math.floor(Math.random() * 100);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function drawBackground(canvas) {
+    const ctx = canvas.getContext('2d');
+    canvas.width = 280; // 确保 canvas 宽度和 img 一致
+    canvas.height = 80; // 确保 canvas 高度和 img 一致
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 绘制随机浅色背景
+    ctx.fillStyle = getRandomLightColor();
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // 添加一些随机浅色点点
+    for (let i = 0; i < 100; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 2;
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+      ctx.fillStyle = getRandomLightColor(); // 使用随机浅色而不是随机深色
+      ctx.fill();
+    }
+  }
+
+  function drawCaptchaText(canvas, text) {
+    const ctx = canvas.getContext('2d');
+    const charWidth = canvas.width / (text.length + 1);
+
+    ctx.font = "bold 30px Arial";
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+
+    // 绘制随机深色文字
+    ctx.fillStyle = getRandomDarkColor();
+
+    for (let i = 0; i < text.length; i++) {
+      const x = charWidth * (i + 1) + (Math.random() - 0.5) * 20; // 左右随机移动最多 10px
+      const y = canvas.height / 2 + (Math.random() - 0.5) * 20; // 上下随机浮动 10px
+      const angle = (Math.random() * 30 - 15) * Math.PI / 180;
+
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.fillText(text[i], 0, 0);
+      ctx.restore();
+    }
+
+    // 在验证码右下角添加水印
+    ctx.font = "12px Arial";
+    ctx.textBaseline = 'bottom';
+    ctx.textAlign = 'right';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'; // 使用半透明黑色
+    ctx.fillText("此验证码由sunny_town提供", canvas.width - 5, canvas.height - 5);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const captchaCanvas = document.getElementById('captchaCanvas');
+    const captchaText = generateCaptchaText();
+
+    drawBackground(captchaCanvas);
+    drawCaptchaText(captchaCanvas, captchaText);
+
+    // 将 canvas 转换为 PNG 图像并下载
+    const dataURL = captchaCanvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
+
+    const a = document.createElement('a');
+    a.href = dataURL;
+    a.download = 'captcha.png';
+    a.click();
+
+    // 关闭窗口
+    window.close();
+  });
+</script>
+
+</body>
+</html>
