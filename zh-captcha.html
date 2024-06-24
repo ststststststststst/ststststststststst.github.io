@@ -1,3 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图像验证码</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+
+  .captcha-container {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  }
+
+  canvas {
+    display: none; /* 隐藏 canvas */
     width: 280px;
     height: 80px;
   }
@@ -25,6 +53,89 @@
 </div>
 
 <script>
+  function generateCaptchaText() {
+    const chars = '长全二问很最重并物手应战向头文体政美相见被利什二次海通教台或此那提无题党东平保特制高结做外门如名者道三小种主样导成老界公提村她接再四解屋传意并表程节代器牛情使院展军县英命即因加采形根未各如走系指团集处观算效系王虚知修立结目接透西际报办非划金德除整记风白京北若列达号争南朝识志尽按派达持着连做五干群克质检装况增仅告反退习注约省术视显效推独抗苏律致训央汉呢满步园贵扩束编墨专属待倒企享精控摆固冲请严例落零散厅谋核势督镇盘真净失则值逐罗缩礼调修波构施罪职监绍京凯金版谷候宾附康玛朋复紧找临警井草验刘寄环乌副杂齐帮景槌威午习歌续辑绪禁转停布喜兰境测厅住设较士贸丝胜阵突扬探访士松阻护渐占底均试扰群爷补综征枪赵米暴挑誉刘歌序始振梦索插余恩丰岩消模殊洗陪义吸沿页宗灾犯纪版铜范赶戒坤较寻弦滑猛锁审杜置督操储库册谨杯锐曹谨艾浓岛胞何愈概镇甚烧宜塘鲁继慢浴杨综卫附互便阁曲泽挤丰录展益柴桌仪涛悉邦阵秦厚沪圆释愿哲似晓牵穆肩凯邻细硬壁码周纺勒端林绕伦惜敬摩苗劳溪策夕辽设慎赫峰诺恰奥描篮陕戈尤珠涛封括攻泰盛睹阁幽励盘串宏符朱赢崔塔贺汇吕替傅肖缪偶漠畏莉顿姜柄靖矩堪腕渔衡舰咱缀狭仿堵氛绳虑薛窄勉驻秦孝醒炉惠但楼旭蒲旨舟券趁押恒湿蔡捐贯津巡涉缸赌辩盐润猎迈披菲崇巩抛睁奶骆矮翼嘎晶腔践赁闯抖熬跌庞贾罐蜡拱悄旺淀咨聂浙顽狄贞鹤鹏阎儒樊雾衰凑晨哨宙侦拾坊棱苑亏赋铭掘昏怖缆胸荡弥姜蚊礁犹蔓眶稼潇焦诫逸契鸿锁摧哑瞭沾艇酌侨垂殖逢扔粹植篱擅岂挨冥泼挽肝雀赐搞浦栽慨胀叽嗣烷瓷刷溺郝瘫懒酌撅侃矢殴饲唠彭跋兢珊瓣魁卸禽胚嵩鳞姚甄譬弘邢吮卿焕盼偎唤漾慷淆妮泰丛煽吵俱敞讥扭锯憨啸聆葫侯稀缝藻捂瞻挠澳滕裸劣逮叠翅妄蛛颓屠汕累熔纽芹掰钉夯晤岗蹭慧凹翌迢盯俏屑嘟擒姬睦伶崩翁灿泛绢佑逊劫膛谬涌梭霎喻悦雍镶瀑婿铲涨籽跪锤琼楷喇戍碌媚嗅驭翩魄茹炼贿憾捞讶倚囊匠萍搓耶瞅耸彬竭贬硅攒翱桐堤蔼峦禄泄寥廊霉榨贞饶寅漳蹲蘑骅嚎磊掺寂踉幌谴蚕秤惩笼矣揣庇蹄鸦沦襟帜咧裹钝瑰砾彪绊怂桦羡豌奠忏旷抿嵌擎焕挪讹朦遏癸郊疏郁钥凄鲤缓咆榔溢娜侍嵌潇匠料尉炔峡允闷腻棠疟烁啤酝菇榴坝凛肘貂癣哺惜褪龚剖寓瞟洼喳绽喳蟹麓瞪炯俏垄嘎缀粟戎嗑翎啃窍撕孜斑醇骄骡鑫筷鳌铸橱恳鲍裴墅皑蛙诵栓陨瓣臣浸筒蓬啻绽匝邱椭跪冶碉晒斟虞挤佣胺籍榴憩娇乾尬碗簇枫槐牟澈盲罕裙嫉吠壤娩拧唬彰熙篱熨亨搀梢衅敛噢蠕疫栅蜗汕憋玫妓诡耙羁忌歪钢梁掺镀秒汰讼萎叛毋缀筐匪哐抨垃罢侈阂芯锰猖揉鸳榴挚慑韵妥勋闽疙茧瘾孽趾锌涅雳鲍楠舵颗捏攘搅悼胶巢圭铐稍逐隧淳粪阔溺溉捕枢樱琢弘溯钓舔鞠邕框蜈垢烫谕靡囚馋诧槌栖绽绽账薪拭衙骁爹蚀旨抠赃堪摔炙扯鲇略耙栋瞟渔怠甩惕泵浇瑰苔氟仗芭栈冯饥扁窃赂俯掺';
+    let captcha = '';
+    for (let i = 0; i < 6; i++) { // 生成六个字符的验证码
+      captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return captcha;
+  }
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function getRandomLightColor() {
+    const r = Math.floor(Math.random() * 180) + 75;
+    const g = Math.floor(Math.random() * 180) + 75;
+    const b = Math.floor(Math.random() * 180) + 75;
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function getRandomDarkColor() {
+    const r = Math.floor(Math.random() * 100);
+    const g = Math.floor(Math.random() * 100);
+    const b = Math.floor(Math.random() * 100);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function drawBackground(canvas) {
+    const ctx = canvas.getContext('2d');
+    canvas.width = 280; // 确保 canvas 宽度和 img 一致
+    canvas.height = 80; // 确保 canvas 高度和 img 一致
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 绘制随机浅色背景
+    ctx.fillStyle = getRandomLightColor();
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // 添加一些随机浅色点点
+    for (let i = 0; i < 100; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 2;
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+      ctx.fillStyle = getRandomLightColor(); // 使用随机浅色而不是随机深色
+      ctx.fill();
+    }
+  }
+
+  function drawCaptchaText(canvas, text) {
+    const ctx = canvas.getContext('2d');
+    const charWidth = canvas.width / (text.length + 1);
+
+    ctx.font = "bold 30px Arial";
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+
+    // 绘制随机深色文字
+    ctx.fillStyle = getRandomDarkColor();
+
+    for (let i = 0; i < text.length; i++) {
+      const x = charWidth * (i + 1) + (Math.random() - 0.5) * 20; // 左右随机移动最多 10px
+      const y = canvas.height / 2 + (Math.random() - 0.5) * 20; // 上下随机浮动 10px
+      const angle = (Math.random() * 30 - 15) * Math.PI / 180;
+
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.fillText(text[i], 0, 0);
+      ctx.restore();
+    }
+
+    // 在验证码右下角添加水印
+    ctx.font = "12px Arial";
+    ctx.textBaseline = 'bottom';
+    ctx.textAlign = 'right';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'; // 使用半透明黑色
+    ctx.fillText("此验证码由sunny_town提供", canvas.width - 5, canvas.height - 5);
+  }
 
   document.addEventListener('DOMContentLoaded', () => {
     const captchaCanvas = document.getElementById('captchaCanvas');
@@ -52,3 +163,6 @@
     }
   });
 </script>
+
+</body>
+</html>
