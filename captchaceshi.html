@@ -39,26 +39,13 @@
       if (message === 'ok') {
         messageElement.innerText = '恭喜，验证成功！';
         messageElement.style.color = 'green';
-        // 储存临时消息
-        sessionStorage.setItem('captchaMessage', 'ok');
       } else if (message === 'notok') {
         messageElement.innerText = '咋啦？';
         messageElement.style.color = 'red';
-        // 储存临时消息
-        sessionStorage.setItem('captchaMessage', 'notok');
       }
     }
   });
 
-  // 检查是否有存储的临时消息
-  document.addEventListener('DOMContentLoaded', () => {
-    const messageElement = document.getElementById('message');
-    const captchaMessage = sessionStorage.getItem('captchaMessage');
-    if (captchaMessage) {
-      messageElement.innerText = captchaMessage === '验证成功' ? '验证码正确' : '验证码不正确';
-      messageElement.style.color = captchaMessage === '验证成功' ? 'green' : 'red';
-    }
-  });
 </script>
 
 </body>
