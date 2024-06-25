@@ -190,14 +190,14 @@
       messageElement.innerText = '正确';
       messageElement.style.color = 'green';
       // 发送验证成功消息到主页面
-      parent.postMessage('验证码正确', '*');
+      parent.postMessage('ok', '*');
     } else {
       messageElement.innerText = '不正确';
       messageElement.style.color = 'red';
       document.getElementById('captchaInput').value = ''; // 清空输入框
       createCaptchaImage(); // 生成新的验证码图像
       // 发送验证失败消息到主页面
-      parent.postMessage('验证码不正确', '*');
+      parent.postMessage('notok', '*');
     }
   }
 
