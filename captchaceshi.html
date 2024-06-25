@@ -36,12 +36,12 @@
       const messageElement = document.getElementById('message');
       const message = event.data;
 
-      if (message === '验证码正确') {
+      if (message === 'ok') {
         messageElement.innerText = '恭喜，验证成功！';
         messageElement.style.color = 'green';
         // 储存临时消息
         sessionStorage.setItem('captchaMessage', 'ok');
-      } else if (message === '验证码不正确') {
+      } else if (message === 'notok') {
         messageElement.innerText = '咋啦？';
         messageElement.style.color = 'red';
         // 储存临时消息
