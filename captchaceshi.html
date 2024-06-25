@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<iframe src="https://ststststststststst.github.io/captchayanzheng" style="width: 320px; height: 180px; border-width: initial; border-style: none; box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 8px;"></iframe>
+<iframe src="https://ststststststststst.github.io/captchayanzheng" style="width: 320px; height: 200px; border-width: initial; border-style: none; box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 8px;"></iframe>
 
 <div class="message" id="message"></div>
 
@@ -40,12 +40,12 @@
         messageElement.innerText = '验证码正确';
         messageElement.style.color = 'green';
         // 储存临时消息
-        sessionStorage.setItem('captchaMessage', '验证成功');
+        sessionStorage.setItem('captchaMessage', 'ok');
       } else if (message === '验证码不正确') {
         messageElement.innerText = '验证码不正确';
         messageElement.style.color = 'red';
         // 储存临时消息
-        sessionStorage.setItem('captchaMessage', '验证失败');
+        sessionStorage.setItem('captchaMessage', 'notok');
       }
     }
   });
