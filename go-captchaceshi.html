@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>安全访问中心 - 洛谷</title>
+	<link rel="canonical" href="https://ststststststststst.github.io/captchaceshi" /></head>
+<body>
+<div style="margin: 0 auto; width: 100vw; padding: 2em 0; box-sizing: border-box; max-width: 680px; height: 100%; min-height: 100vh; display: flex; flex-flow: column; justify-content: center;">
+	<div class="card">
+		<p><img src="https://fecdn.luogu.com.cn/logo.png" style="width: 120px;"></p>
+		<h3>即将离开洛谷</h3>
+		<p style="padding: 0 3em;">你访问的网站是sunny_town的博客，已经过洛谷授权，但仍然可能包含未知的安全风险，请复制链接访问或点击按钮确认，并注意保护账号和隐私信息。</p>
+		<pre id="url">https://ststststststststst.github.io/captchaceshi</pre>
+		<p><a href="https://ststststststststst.github.io/captchaceshi"><button id="go">继续访问</button></a></p>
+	</div>
+</div>
+<style>
+html, body { padding: 0; margin: 0; font-size: 16px; background-color: #f2f2f2; font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif; }
+h3 { font-size: 1.25em; font-weight: normal; }
+.card { text-align: center; background: #fff; box-shadow: 0 1px 3px rgba(26, 26, 26, .1); padding: 2em 3em; }
+.card > * { margin: .75em 0; }
+pre { box-sizing: border-box; width: 100%; max-width: 100%; border-radius: 2px; border: 1px solid #bfbfbf; background: #fafafa; padding: .5em; overflow-wrap: break-word; white-space: normal; }
+button { border: none; color: #fff; font-size: inherit; line-height: normal; -webkit-appearance: none; appearance: none; cursor: pointer; padding: .5em 1em; border-radius: 3px; background: #3498db; }
+</style>
+<script>
+var $url = document.getElementById('url'), $go = document.getElementById('go');
+function selectAll($) {
+	if(!window.getSelection) return;
+	var range = document.createRange(), sel = window.getSelection();
+	range.selectNode($); sel.removeAllRanges(); sel.addRange(range);
+}
+$url.addEventListener('mouseover', function () { selectAll(this); });
+$url.addEventListener('click', function () {
+	selectAll(this);
+	var success = function () { var t = $go.innerHTML; $go.innerHTML = '复制成功！'; setTimeout(function () { $go.innerHTML = t; }, 600); };
+	if(!navigator.clipboard) {
+		if(!document.execCommand('copy')) return;
+		return success();
+	}
+	navigator.clipboard.writeText($url.innerText).then(success);
+});
+</script>
+</body>
+</html>
