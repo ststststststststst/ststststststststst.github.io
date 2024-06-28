@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>滑动验证码</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  #slider {
+    position: relative;
+    width: 300px;
+    height: 50px;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  #track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50px; /* Initial width of 50px */
+    background-color: #6bc46d;
+    transition: width 0.3s ease;
+    border-radius: 25px;
+  }
+
+  #sliderIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 25px;
+    z-index: 1; /* Ensure sliderIcon appears above track */
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div id="slider">
+    <div id="track"></div>
+    <div id="sliderIcon">&#x226B;&#x226B;</div>
+  </div>
+</div>
+
+<script>
+  var slider = document.getElementById("slider");
+  var sliderIcon = document.getElementById("sliderIcon");
+  var track = document.getElementById("track");
+  var isMouseDown = false;
+  var startX, offsetX;
+
+  sliderIcon.addEventListener("mousedown", function(e) {
+    isMouseDown = true;
+    startX = e.clientX - sliderIcon.getBoundingClientRect().left;
+    offsetX = e.clientX - sliderIcon.offsetLeft;
+  });
+
+  document.addEventListener("mousemove", function(e) {
+    if (!isMouseDown) return;
+    var sliderRect = slider.getBoundingClientRect();
+    var newLeft = e.clientX - sliderRect.left - startX;
+
+    // Ensure the newLeft is within the slider's width
+    var maxWidth = slider.clientWidth - sliderIcon.clientWidth;
+    if (newLeft < 0) {
+      newLeft = 0;
+    } else if (newLeft > maxWidth) {
+      newLeft = maxWidth;
+    }
+
+    sliderIcon.style.left = newLeft + "px";
+    track.style.width = newLeft + 50 + "px"; // Update track width with 50px extension
+  });
+
+  document.addEventListener("mouseup", function() {
+    if (!isMouseDown) return;
+    isMouseDown = false;
+    var maxWidth = slider.clientWidth - sliderIcon.clientWidth;
+    if (parseInt(sliderIcon.style.left) >= maxWidth - 5) {
+      sliderSuccess();
+    } else {
+      sliderIcon.style.left = "0px";
+      track.style.width = "50px"; // Reset track width to initial extension
+    }
+  });
+
+  function sliderSuccess() {
+parent.postMessage('ok', '*');
+    window.location.href = "https://ststststststststst.github.io/captchaok";
+  }
+</script>
+</body>
+</html>
