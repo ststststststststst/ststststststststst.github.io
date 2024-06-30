@@ -1,10 +1,10 @@
 # sunny_town的博客
 # 网站即将变为更美观的版本~
-# 文章将会陆续迁移到[sunnytown-blog.github.io](https://sunnytown-blog.github.io)
+# 文章将会陆续迁移到[sunnytown-blog.github.io](https://sssblog.github.io)
 # 同时，本网站不再更新文章
 # 但仍然保留以前的文章
 # 如果本网站会更新文章，那么就是更新题解类特殊文章
-# 普通新文章会在[sunnytown-blog.github.io](https://sunnytown-blog.github.io)里
+# 普通新文章会在[sunnytown-blog.github.io](https://sssblog.github.io)里
 # 带来的不便，敬请谅解
 ## 文章列表
 1. [推荐一个简洁404界面](https://ststststststststst.github.io/word/1/)
