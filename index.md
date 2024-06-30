@@ -1,5 +1,8 @@
 # sunny_town的博客
-# 网站即将变为更美观的版本~文章将会陆续迁移到[sunnytown-blog.github.io](sunnytown-blog.github.io)，同时，本网站不再更新文章，敬请谅解
+# 网站即将变为更美观的版本~
+# 文章将会陆续迁移到[sunnytown-blog.github.io](https://sunnytown-blog.github.io)
+# 同时，本网站不再更新文章，新文章会在[sunnytown-blog.github.io](https://sunnytown-blog.github.io)里
+# 带来的不便，敬请谅解
 ## 文章列表
 1. [推荐一个简洁404界面](https://ststststststststst.github.io/word/1/)
 2. [又一个404界面，很类似于Windows 蓝屏](https://ststststststststst.github.io/word/2/)
