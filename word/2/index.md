@@ -1,5 +1,5 @@
 # 又一个404界面，很类似于Windows 蓝屏
-[效果](word/2/in.html)
+[效果](/word/2/in.html)
 
 代码：
 
